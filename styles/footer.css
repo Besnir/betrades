@@ -1,0 +1,155 @@
+footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 0 0 0;
+  gap: 30px;
+  color: white;
+  width: 100%;
+
+  background-color: black;
+  border-top: 3px solid #898888d6;
+}
+
+.platform {
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ gap: 40px;
+ padding:0 10px;
+}
+
+.platform-ih {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.platform-ih img {
+  width: 40px;
+  object-fit: contain;
+}
+
+.platform-ih h1 {
+  font-size: 25px;
+  font-weight: 500;
+}
+
+.platform .desc {
+  text-align: center;
+}
+
+.platform .desc p {
+  max-width: 1000px;
+  color: white;
+  font-size: 15px;
+  border: none;
+  text-align: left;
+  padding: 0;
+}
+
+.social-handles {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 450px;
+  gap: 20px;
+  padding: 0 10px;
+}
+
+.social-handles li i {
+  font-size: 25px;
+}
+
+.social-handles li a {
+  color: white;
+}
+
+.social-handles li .Instagram {
+  color: #a71fd4;
+}
+
+.social-handles li .YouTube {
+  color: red;
+}
+
+.social-handles li .Telegram {
+  color: rgb(0, 136, 255);
+}
+
+.social-handles li .WhatsAapp {
+  color: rgba(0, 128, 0, 0.874);
+}
+
+.social-handles li a:hover {
+  opacity: .7;
+}
+
+.footer-menu {
+  list-style: none;
+  height: 42px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.footer-menu li a {
+  text-decoration: none;
+  color: white;
+  font-size: 14px;
+  border: 1px solid white;
+  padding: 8px;
+  border-radius: 12px;
+  font-weight: normal;
+}
+
+.footer-menu li a:hover {
+  color: #065577;
+  border: 1px solid #065577;
+}
+
+.footer-menu li .active {
+  border: 1px solid #ff8c00;
+  color: #ff8c00;
+}
+
+.footer-menu li .active:hover {
+  color: #ff8c00;
+  border: 1px solid #ff8c00;
+}
+
+footer p {
+  color: white;
+  font-weight: 500;
+  font-size: 16px;
+  width: 98%;
+  margin: 0 auto;
+  border-top: 2px solid #8988883b;
+  text-align: center;
+  padding: 10px;
+}
+
+footer p span {
+  font-weight: bolder;
+  color: #065577;
+}
+
+@media (max-width: 640px) {
+  .footer-menu li {
+    margin-top: 20px;
+  }
+}
+
+@media (max-width: 510px) {
+  .footer-menu {
+    flex-direction: column;
+    justify-content: space-between;
+    height: fit-content;
+  }
+}

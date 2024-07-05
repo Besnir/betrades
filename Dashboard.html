@@ -1,0 +1,286 @@
+<?php
+session_start();
+include 'connection.html';
+
+// Check if user is logged in
+if (!isset($_SESSION['user_id'])) {
+    header("Location: login.html");
+    exit();
+}
+
+// Fetch user data
+$user_id = $_SESSION['user_id'];
+$stmt = $conn->prepare("SELECT username FROM users WHERE id = ?");
+$stmt->bind_param("i", $user_id);
+$stmt->execute();
+$stmt->bind_result($username);
+$stmt->fetch();
+$stmt->close();
+
+// Capitalize first letter of username
+$username = ucfirst($username);
+
+$conn->close();
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="view-transition" content="same-origin">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Dashboard~be.trades</title>
+    <link rel="website icon" type="png" href="images/betradeslogo.png">
+    <link rel="stylesheet" href="styles/general.css">
+    <link rel="stylesheet" href="styles/footer.css">
+    <link rel="stylesheet" href="styles/Dashboard.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+  </head>
+  <body>
+    <div class="loader"></div>
+    <div class="grid-container">
+      <!-- Header -->
+      <header class="header">
+        <div class="menu-icon" onclick="openSidebar()">
+          <span class="material-icons-outlined">menu</span>
+        </div>
+        <div class="header-left">
+          <p class="affiliateName"><?php echo htmlspecialchars($username); ?>'s Space</p>
+        </div>
+        <div class="header-right">
+          <img src="images/profile-image.jpg" alt="profile">
+        </div>
+      </header> 
+      <!-- End Header -->
+
+      <!-- Sidebar -->
+      <aside id="sidebar">
+        <div class="sidebar-title">
+          <div class="sidebar-brand">
+            <div class="company-logo">
+              <img src="images/betradeslogo.png">
+            </div>
+            <div class="company-name">
+              <p>BE<br>TRADES</p>
+            </div>
+          </div>
+          <span class="material-icons-outlined" onclick="closeSidebar()">close</span>
+        </div>
+
+        <ul class="sidebar-list">
+          <div class="ulContainer">
+            <div class="ulMainlists">
+              <li class="active">
+                <a href="#">
+                  <div class="sideIcon">
+                    <i class="fa-solid fa-house"></i>
+                    <p>Dashboard</p>
+                  </div>
+               </a>
+              </li>
+              <li>
+                <a class="question" onclick="toggleAnswer(this)" href="#">
+                  <div class="sideIcon">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                    <p>Mentorship</p>
+                    <span class="arrow">▼</span>
+                  </div>
+
+                  <ul class="answer">
+                    <li><a href="dashboardFreeCourse.html">Free&nbsp;Course</a></li>
+                    <li><a href="dashboardMentorship.html">Mentorship&nbsp;Course</a></li>
+                  </ul>
+                </a>
+              </li>
+              <li>
+                <a class="question" onclick="toggleAnswer(this)" href="#">
+                  <div class="sideIcon">
+                    <i class="fa-solid fa-circle-plus"></i>
+                    <p>Forex</p>
+                    <span class="arrow">▼</span>
+                  </div>
+
+                  <ul class="answer">
+                    <li><a href="dashboardCharts.html">Charts</a></li>
+                    <li><a href="dashboardPipsCalc.html">Pips&nbsp;Calculator</a></li>
+                  </ul>
+                </a>
+              </li>
+              <li>
+                <a class="question" onclick="toggleAnswer(this)" href="#">
+                  <div class="sideIcon">
+                    <i class="fa-solid fa-people-group"></i>
+                    <p>Affiliate</p>
+                    <span class="arrow">▼</span>
+                  </div>
+
+                  <ul class="answer">
+                    <li><a href="dashboardAffiliateprograme.html">Dashboard</a></li>
+                    <li><a href="yourEarningsLevels.html">Your&nbsp;Earnings</a></li>
+                    <li><a href="dashboardWithdraw.html">Withdraw</a></li>
+                  </ul>
+                </a>
+              </li>
+              <li>
+                <a href="dashboardContactUs.html">
+                  <div class="sideIcon">
+                    <i class="fa-regular fa-address-book"></i>
+                    <p>Contact&nbsp;Us</p>
+                  </div>
+                </a>
+              </li>
+              <li>
+                <a href="dashboardFaqs.html">
+                  <div class="sideIcon">
+                    <i class="fa-solid fa-hand"></i>
+                    <p>FAQs</p>
+                  </div>
+                </a>
+              </li>
+            </div>
+            <li>
+              <a href="logout.html">
+                <div class="sideIcon">
+                  <i class="fa-solid fa-right-from-bracket"></i>
+                  <p>Logout</p>
+                </div> 
+              </a>
+            </li>
+          </div>
+        </ul>
+      </aside>
+      <!-- End Sidebar -->
+
+      <!-- Main -->
+      <main class="main-container">
+        <div class="allDashmainDiv">
+          <div class="dashHeader">
+            <div class="dashHD">
+              <p class="topHeader">Home</p>
+              <p class="dashTitle">Dashboard</p>
+            </div>
+            <i class="fa-solid fa-house"></i>
+          </div>
+              
+          <div class="dashBrivian">
+            <div class="accounth3AndDetails">
+              <h3>Hi Emmanuel Werangai, it's nice seeing you! Welcome to Dash! Explore powerful tools for trading insights and financial data analysis. Happy exploring and successful trading ahead!</h3>
+              <div class="accountStatusDiv">
+                <div class="head">
+                  <h2>Account Details</h2>
+                  <i class="far fa-id-card"></i>
+                </div>
+                <div class="body">
+                  <p>Account status</p>
+                  <p>Active</p>
+                </div>
+                <div class="body">
+                  <p>Start date</p>
+                  <p>27/06/2024</p>
+                </div>
+                <div class="body">
+                  <p>Affiliate status</p>
+                  <p>Inactive</p>
+                </div>
+                <div class="body">
+                  <p>Account Status</p>
+                  <p>Active</p>
+                </div>
+                <div class="body">
+                  <p>Account Status</p>
+                  <p>Active</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="accountAnalytics">
+              <h1>Analytics</h1>
+              <div class="analyticsChild">
+                <div class="childDetails">
+                  <i class="fa-solid fa-comment-medical"></i>
+                  <p>Free Course Progress</p>
+                  <h4>STILL</h4>
+                  <p>Not yet started</p>
+                </div>
+                <div class="progressInSection">
+                  0%
+                </div>
+              </div>
+              <div class="analyticsChild">
+                <div class="childDetails">
+                  <i class="fa-solid fa-circle-dollar-to-slot"></i>
+                  <p>Mentorship Course Progress</p>
+                  <h4>STILL</h4>
+                  <p>Not yet started</p>
+                </div>
+                <div class="progressInSection">
+                  0%
+                </div>
+              </div>
+              <div class="analyticsChild affiliate">
+                <div class="head">
+                  <h4>Affiliate Progress</h4>
+                  <i class="fa-solid fa-people-group"></i>
+                </div>
+                <div class="body">
+                  <p>Investment</p>
+                  <p>O KES</p>
+                </div>
+                <div class="body">
+                  <p>Profit</p>
+                  <div class="progressInSection affiliate">
+                    0%
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="emailBox">
+            <p>Leave your Email to receive our Newsletter.</p>
+            <div class="newsletterEmail">
+              <input class="email-input" type="email" placeholder="Type your email here">
+              <input type="submit" value="Submit">
+            </div>
+          </div>
+          
+          <!--footer section-->
+          <footer>
+            <div class="platform">
+              <div class="platform-ih">
+                <img src="images/betradeslogo.png" alt="">
+
+                <h1>BE.TRADES</h1>
+              </div>
+
+              <ul class="social-handles">
+                <li><a class="Instagram" href="https://www.instagram.com/_be.trades" target="_blank"><i class="fa-brands fa-instagram"></i></a></li>
+                <li><a class="YouTube" href="https://www.youtube.com/@blessedemmanuel254" target="_blank"><i class="fa-brands fa-youtube"></i></a></li>
+                <li><a class="Email" href="mailto:emmanueltindi23@gmail.com"><i class="fa-solid fa-envelope"></i></a></li>
+                <li><a class="Telegram" href="https://t.me/+254759578630" target="_blank"><i class="fa-brands fa-telegram"></i></a></li>
+                <li><a class="WhatsAapp" href="https://wa.me/254759578630" target="_blank"><i class="fa-brands fa-whatsapp fa-2x"></i></a></li>
+              </ul>
+
+              <div class="desc">
+                <p>
+                  Discover unparalleled possibilities on our trading platform! Seamlessly designed for traders of all backgrounds, we offer a comprehensive suite of tools and resources to elevate your trading experience. Gain access to real-time market data, advanced analysis tools, and a vibrant community of fellow traders. Whether you're a novice seeking guidance or a seasoned professional looking for new opportunities, our platform is your gateway to success. Join us today and unlock your potential in the world of trading!
+                </p>
+              </div>
+            </div>
+
+            <p>Copyright &copy; 2024 <span>Be.Trades </span>&#8226; All rights reserved.</p>
+          </footer>
+        </div>
+      </main>
+
+    </div>
+
+    <!-- Custom JS -->
+    <script src="styles/Dashboard.js"></script>
+    <script src="styles/styles.js"></script>
+  </body>
+</html>
