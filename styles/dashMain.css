@@ -99,6 +99,12 @@
   font-weight: normal;
 }
 
+.linkbtn {
+  display: flex;
+  gap: 30px;
+  width: fit-content;
+}
+
 .linkbtn button {
   color: white;
   padding: 8px;
@@ -106,10 +112,12 @@
   border: none;
   font-size: 15px;
   cursor: pointer;
+  display: inline;
+  border-radius: 2px;
 }
 
 .linkbtn .sharebtn {
-  margin-left: 30px;
+  margin-left: 10%; 
 }
 
 .linkbtn button:hover {

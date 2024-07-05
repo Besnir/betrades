@@ -4,8 +4,8 @@ include 'connection.html';
 
 // Check if user is logged in
 if (!isset($_SESSION['user_id'])) {
-    header("Location: login.html");
-    exit();
+  header("Location: login.html");
+  exit();
 }
 
 // Fetch user data
@@ -52,7 +52,7 @@ $conn->close();
           <p class="affiliateName"><?php echo htmlspecialchars($username); ?>'s Space</p>
         </div>
         <div class="header-right">
-          <img src="images/profile-image.jpg" alt="profile">
+          EW
         </div>
       </header> 
       <!-- End Header -->
@@ -168,7 +168,7 @@ $conn->close();
               
           <div class="dashBrivian">
             <div class="accounth3AndDetails">
-              <h3>Hi Emmanuel Werangai, it's nice seeing you! Welcome to Dash! Explore powerful tools for trading insights and financial data analysis. Happy exploring and successful trading ahead!</h3>
+              <h3>Hi Emmanuel Werangai, it's nice seeing you! Welcome to Dash! Explore powerful tools for trading insights and financial data analysis.</h3>
               <div class="accountStatusDiv">
                 <div class="head">
                   <h2>Account Details</h2>
@@ -179,22 +179,24 @@ $conn->close();
                   <p>Active</p>
                 </div>
                 <div class="body">
-                  <p>Start date</p>
-                  <p>27/06/2024</p>
-                </div>
-                <div class="body">
                   <p>Affiliate account status</p>
                   <p>Inactive</p>
                 </div>
                 <div class="body">
-                  <p>Account Status</p>
-                  <p>Active</p>
+                  <p>Mentorship</p>
+                  <p>Not enrolled</p>
                 </div>
                 <div class="body">
-                  <p>Account Status</p>
-                  <p>Active</p>
+                  <p>Country</p>
+                  <p>Kenya</p>
+                </div>
+                <div class="body">
+                  <p>Start date</p>
+                  <p>27/06/2024</p>
                 </div>
               </div>
+
+              <h1> Happy exploring and successful trading ahead!</h1>
             </div>
 
             <div class="accountAnalytics">
@@ -223,7 +225,7 @@ $conn->close();
               </div>
               <div class="analyticsChild affiliate">
                 <div class="head">
-                  <h4>Affiliate Progress</h4>
+                  <h4>Affiliate&nbsp;Progress</h4>
                   <i class="fa-solid fa-people-group"></i>
                 </div>
                 <div class="body">
@@ -231,10 +233,8 @@ $conn->close();
                   <p>O KES</p>
                 </div>
                 <div class="body">
-                  <p>Expenses/Profit</p>
-                  <div class="progressInSection affiliate">
-                    0%
-                  </div>
+                  <p>Profit</p>
+                  <p>0%</p>
                 </div>
               </div>
             </div>
@@ -252,7 +252,7 @@ $conn->close();
           <footer>
             <div class="platform">
               <div class="platform-ih">
-                <img src="images/betradeslogo.png" alt="">
+                <img src="images/betradeslogo.png" alt="logo">
 
                 <h1>BE.TRADES</h1>
               </div>

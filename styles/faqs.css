@@ -24,10 +24,11 @@
   display: flex;
   align-items: center;
   flex-direction: column;
-  gap: 30px;
+  gap: 25px;
 
   padding: 0 10px;
-  max-width: 600px;
+  width: 100%;
+  max-width: 800px;
   margin: 0 auto;
   font-size: 17px;
 }
@@ -36,6 +37,12 @@
   display: flex;
   flex-direction: column;
   margin-bottom: 15px;
+  padding: 0 4px;
+  border-radius: 4px;
+}
+
+.faq-item:hover {
+  box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.2);
 }
 
 .faq-item .question {
@@ -46,6 +53,7 @@
   font-weight: 600px;
   position: relative;
   color: #065577;
+  font-size: 19px;
 }
 
 .faq-item .question span {
@@ -60,7 +68,7 @@
   text-align: left;
   margin-top: 5px;
   color: #898888;
-  font-size: 16px;
+  font-size: 17px;
 }
 
 .faq-item .answer p {
