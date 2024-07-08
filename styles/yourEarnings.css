@@ -32,6 +32,8 @@ main.table1 {
 
 .tableHeader .main--title {
   font-weight: normal;
+  text-align: left;
+  font-size: 18px;
 }
 
 .tableHeader.level2 {

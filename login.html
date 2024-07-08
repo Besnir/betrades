@@ -129,17 +129,7 @@ $conn->close();
                 <h1>Login</h1>
                 <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
                 <?php if (!empty($error)): ?>
-                    <div style="
-                    margin-top: 10px;
-                    color: red; 
-                    font-size: 16px;
-                    border: 1px solid #898888;
-                    text-align: center;
-                    background: #dedede;
-                    padding: 6px 0;
-                    border-radius: 14px;
-                    transition: .5s ease-in;
-                    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.26);" class="error-message"><?php echo $error; ?></div>
+                    <div class="error-message"><?php echo $error; ?></div>
                 <?php endif; ?>
                     <div class="inp-box">
                         <input type="email" name="mail" required="required">

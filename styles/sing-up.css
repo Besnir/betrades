@@ -115,7 +115,7 @@ form .inp-box {
   font-size: 14px;
 }
 
-form input {
+form input, form .inp-box #countrySelect {
   width: 100%;
   padding: 6px 0;
   font-size: 16px;

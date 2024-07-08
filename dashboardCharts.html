@@ -46,10 +46,10 @@ $conn->close();
   </head>
   <body>
     <div class="loader"></div>
-    <div class="grid-container">
+    <div class="grid-container chartsGrid">
       <!-- Header -->
       <header class="header">
-        <div class="menu-icon" onclick="openSidebar()">
+        <div class="menu-icon chartsSidebar" onclick="openSidebar()">
           <span class="material-icons-outlined">menu</span>
         </div>
         <div class="header-left">
@@ -62,7 +62,7 @@ $conn->close();
       <!-- End Header -->
 
       <!-- Sidebar -->
-      <aside id="sidebar">
+      <aside id="sidebar" class="chartsSidebar">
         <div class="sidebar-title">
           <div class="sidebar-brand">
             <div class="company-logo">
@@ -72,7 +72,7 @@ $conn->close();
               <p>BE<br>TRADES</p>
             </div>
           </div>
-          <span class="material-icons-outlined" onclick="closeSidebar()">close</span>
+          <span class="material-icons-outlined chartsSidebar" onclick="closeSidebar()">close</span>
         </div>
 
         <ul class="sidebar-list">

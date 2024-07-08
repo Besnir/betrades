@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BeMula sign-up</title>
+
+  <link rel="stylesheet" href="styles/sing-up.css">
+  <link rel="stylesheet" href="styles/general.css">
+</head>
+<body>
+  <div class="sing-up-bar">
+      <div class="signupWelcome">
+          <h2 class="welcomeMessg">Register&nbsp;be<span>Mula</span>&nbsp;account.</h2>
+
+          <div class="sign-up">
+              <h1>BeMula&nbsp;registration</h1>
+              <h4>Trade forex as well as earn with our affiliate programe.</h4>
+              <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>
+                  <!--">
+                  <?php if (!empty($error)): ?>
+                      <div class="error-message"><?php echo $error; ?></div>
+                  <?php endif; ?>-->
+                  <div class="inp-box">
+                    <input type="text" name="username" required="required">
+                    <span>Username</span>
+                  </div>
+                  <div class="inp-box">
+                    <input type="text" name="number" required="required">
+                    <span>Phone</span>
+                  </div>
+                  <div class="inp-box">
+                    <input type="email" name="mail" required="required">
+                    <span>Email</span>
+                  </div>
+                  <div class="inp-box">
+                    <input id="password" type="password" name="pass" required="required">
+                    <span>Password</span>
+                  <i id="eye-icon" class="toggle-password fas fa-eye" onclick="togglePasswordVisibility()"></i>
+                  </div>
+                  <div class="inp-box">
+                    <input id="password2" type="password" name="confirm_pass" required="required">
+                    <span>Confirm Password</span>
+                    <i id="eye-icon2" class="toggle-password fas fa-eye" onclick="togglePasswordVisibility2()"></i>
+                  </div>
+                <input class="submit-btn" type="submit" value="Register&nbsp;account">
+                <p>Already have an account? <a href="affiliateLogin.html">Sign in.</a></p>
+              </form>
+          </div>
+      </div>
+  </div>
+
+  <script src="styles/styles.js"></script>
+</body>
+</html>
