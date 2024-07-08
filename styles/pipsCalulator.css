@@ -14,6 +14,10 @@ section h1 {
   color: black;
 }
 
+section h1.calMessage {
+  font-weight: normal;
+}
+
 section h1 span {
   color: #065577;
 }
@@ -456,7 +460,11 @@ section h1 span {
   }
 
   .calculator, .calculator1 {
+    width: 95%;
+    margin:0 auto;
     max-width:none;
+    min-height: none;
+    max-height: 90vh;
   }
 }
 
