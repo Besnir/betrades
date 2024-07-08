@@ -462,9 +462,9 @@ section h1 span {
   .calculator, .calculator1 {
     width: 95%;
     margin:0 auto;
-    max-width:none;
-    min-height: 50vh;
-    max-height: 100vh;
+    max-width:500px;
+    min-height: 500px;
+    max-height: 90vh;
   }
 }
 
