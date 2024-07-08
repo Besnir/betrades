@@ -12,7 +12,6 @@
 main.table1 {
   width: 82vw;
   height: 92vh;
-  max-height: 500px;
   background: #dedede50;
   border-radius: 1rem;
   box-shadow: 0 15px 10px rgba(0, 0, 0, 0.26);
