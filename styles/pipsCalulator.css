@@ -463,7 +463,7 @@ section h1 span {
     width: 95%;
     margin:0 auto;
     max-width:500px;
-    min-height: 500px;
+    min-height: 520px;
     max-height: 90vh;
   }
 }
