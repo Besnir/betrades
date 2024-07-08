@@ -454,6 +454,10 @@ section h1 span {
   section h1 {
     font-size: 20px;
   }
+
+  .calculator, .calculator1 {
+    max-width:none;
+  }
 }
 
 @media (max-width: 790Px) {

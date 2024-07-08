@@ -514,9 +514,10 @@
 
 .dashBrivian .accounth3AndDetails h1 {
   text-align: left;
-  margin-top: 30px;
-  font-size: 28px;
+  font-size: 24px;
   font-weight: normal;
+  width: 95%;
+  margin: 30px auto 50 auto;
 }
 
 .dashBrivian .accountAnalytics {
@@ -600,11 +601,6 @@
   .dashBrivian h3 {
     width: 95%;
     margin: 0 auto 35px auto;
-  }
-
-  .dashBrivian .accounth3AndDetails h1 {
-    width: 95%;
-    margin: 20px auto 0 auto;
   }
 
   .dashBrivian .accounth3AndDetails {
