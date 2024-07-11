@@ -261,7 +261,6 @@ function plusSlides(n) {
 }
 
 // faqs js
-
 function toggleAnswer(question) {
   const answer = question.nextElementSibling;
   const arrow = question.querySelector('.arrow');

@@ -1,183 +1,4 @@
-const modeSelect = document.getElementById('mode');
-const normalCalculator = document.getElementById('normalCalculator');
-const pipsCalculator = document.getElementById('pipsCalculator');
-
-modeSelect.addEventListener('change', function() {
-	if (modeSelect.value === 'normal') {
-		normalCalculator.style.display = 'flex';
-		pipsCalculator.style.display = 'none';
-	} else if (modeSelect.value === 'pips') {
-		normalCalculator.style.display = 'none';
-		pipsCalculator.style.display = 'flex';
-	}
-});
-
-const keys = document.querySelectorAll('.key');
-const display_input = document.querySelector('.display .input');
-const display_output = document.querySelector('.display .output');
-
-let input = "";
-
-for (let key of keys) {
-	const value = key.dataset.key;
-
-	key.addEventListener('click', () => {
-		if (value == "clear") {
-			input = "";
-			display_input.innerHTML = "";
-			display_output.innerHTML = "";
-		} else if (value == "backspace") {
-			input = input.slice(0, -1);
-			display_input.innerHTML = CleanInput(input);
-		} else if (value == "=") {
-			let result = eval(PerpareInput(input));
-
-			display_output.innerHTML = CleanOutput(result);
-		} else if (value == "brackets") {
-			if (
-				input.indexOf("(") == -1 || 
-				input.indexOf("(") != -1 && 
-				input.indexOf(")") != -1 && 
-				input.lastIndexOf("(") < input.lastIndexOf(")")
-			) {
-				input += "(";
-			} else if (
-				input.indexOf("(") != -1 && 
-				input.indexOf(")") == -1 || 
-				input.indexOf("(") != -1 &&
-				input.indexOf(")") != -1 &&
-				input.lastIndexOf("(") > input.lastIndexOf(")")
-			) {
-				input += ")";
-			}
-
-			display_input.innerHTML = CleanInput(input);
-		} else {
-			if (ValidateInput(value)) {
-				input += value;
-				display_input.innerHTML = CleanInput(input);
-			}
-		}
-	})
-}
-
-document.addEventListener('keydown', function(event) {
-	const value = event.key;
-
-	if (value === "Escape") { // Clear
-			input = "";
-			display_input.innerHTML = "";
-			display_output.innerHTML = "";
-	} else if (value === "Backspace") { // Backspace
-			input = input.slice(0, -1);
-			display_input.innerHTML = CleanInput(input);
-	} else if (value === "=" || value === "Enter") { 
-		result = eval(PerpareInput(input));
-
-		display_output.innerHTML = CleanOutput(result);
-	} else if (value === "(" || value === ")") { // Brackets
-		if (
-				input.indexOf("(") === -1 ||
-				(input.indexOf("(") !== -1 && input.indexOf(")") !== -1 && input.lastIndexOf("(") < input.lastIndexOf(")")
-		)) {
-				input += value;
-		} else if (
-				(input.indexOf("(") !== -1 && input.indexOf(")") === -1) ||
-				(input.indexOf("(") !== -1 && input.indexOf(")") !== -1 && input.lastIndexOf("(") > input.lastIndexOf(")")
-		)) {
-				input += value;
-		}
-		display_input.innerHTML = CleanInput(input);
-	} else {
-		if (!isNaN(key)) {
-			return true;
-		} else if (isNaN(key)) {
-			event.preventDefault();
-		} else if (ValidateInput(value)) {
-			input += value;
-			display_input.innerHTML = CleanInput(input);
-		}	
-	}
-});
-
-function CleanInput(input) {
-	let input_array = input.split("");
-	let input_array_length = input_array.length;
-
-	for (let i = 0; i < input_array_length; i++) {
-		if (input_array[i] == "*") {
-			input_array[i] = ` <span class="operator">x</span> `;
-		} else if (input_array[i] == "/") {
-			input_array[i] = ` <span class="operator">÷</span> `;
-		} else if (input_array[i] == "+") {
-			input_array[i] = ` <span class="operator">+</span> `;
-		} else if (input_array[i] == "-") {
-			input_array[i] = ` <span class="operator">-</span> `;
-		} else if (input_array[i] == "(") {
-			input_array[i] = `<span class="brackets">(</span>`;
-		} else if (input_array[i] == ")") {
-			input_array[i] = `<span class="brackets">)</span>`;
-		} else if (input_array[i] == "%") {
-			input_array[i] = `<span class="percent">%</span>`;
-		}
-	}
-
-	return input_array.join("");
-}
-
-function CleanOutput (output) {
-	let output_string = output.toString();
-	let decimal = output_string.split(".")[1];
-	output_string = output_string.split(".")[0];
-
-	let output_array = output_string.split("");
-
-	if (output_array.length > 3) {
-		for (let i = output_array.length - 3; i > 0; i -= 3) {
-			output_array.splice(i, 0, ",");
-		}
-	}
-
-	if (decimal) {
-		output_array.push(".");
-		output_array.push(decimal);
-	}
-
-	return output_array.join("");
-}
-
-function ValidateInput (value) {
-	let last_input = input.slice(-1);
-	let operators = ["+", "-", "*", "/"];
-
-	if (value == "." && last_input == ".") {
-		return false;
-	}
-
-	if (operators.includes(value)) {
-		if (operators.includes(last_input)) {
-			return false;
-		} else {
-			return true;
-		}
-	}
-
-	return true;
-}
-
-function PerpareInput (input) {
-	let input_array = input.split("");
-
-	for (let i = 0; i < input_array.length; i++) {
-		if (input_array[i] == "%") {
-			input_array[i] = "/100";
-		}
-	}
-
-	return input_array.join("");
-}
-
-//Position Sizing Calculator
+// Position Sizing Calculator
 const category = document.getElementById('category');
 const currencyPair = document.querySelector('.items__asset .currency');
 const asset = document.querySelector('.items__asset .asset');
@@ -222,16 +43,16 @@ category.addEventListener('change', function() {
 });
 
 let accountBalance = "";
-let pips ="";
+let pips = "";
 let riskAmount = "";
 
 const next_button = document.querySelector('.doneBtn');
 const next_button1 = document.querySelector('.doneBtn1');
 const pipsInput = document.querySelector('.input2.pipsInput');
 const balanceInput = document.querySelector('.input2.Balance');
-const percentageSpan = document.querySelector('.theInput .percentage')
+const percentageSpan = document.querySelector('.theInput .percentage');
 const percentageRiskInput = document.querySelector('.input2.percentageInput');
-const moneySpan = document.querySelector('.theInput .money')
+const moneySpan = document.querySelector('.theInput .money');
 const moneyRiskInput = document.querySelector('.input2.moneyInput');
 const switchButton = document.querySelector('.switch-risk .switch');
 const outputDisplay = document.querySelector('.output1'); 
@@ -241,43 +62,49 @@ async function calculateLotSize(pips, riskAmount) {
     const baseCurrency = currencyPairQuote.substring(0, 3);
     const quoteCurrency = currencyPairQuote.substring(3, 6);
     let exchangeRate = "";
+    let accountCurrencyExchangeRate = 1;
 
     try {
-			const response = await fetch(`https://open.er-api.com/v6/latest/${baseCurrency}`);
-			const data = await response.json();
-			exchangeRate = data.rates[quoteCurrency];
+        const response = await fetch(`https://open.er-api.com/v6/latest/${baseCurrency}`);
+        const data = await response.json();
+        exchangeRate = data.rates[quoteCurrency];
 
-			let pipValue = "";
-			let lotSize = "";
+        if (quoteCurrency !== traderPreferedCurrency) {
+            const accountCurrencyResponse = await fetch(`https://open.er-api.com/v6/latest/${quoteCurrency}`);
+            const accountCurrencyData = await accountCurrencyResponse.json();
+            accountCurrencyExchangeRate = accountCurrencyData.rates[traderPreferedCurrency];
+        }
 
-			if (category.value === 'Forex' || category.value === 'Commodities') {
-					if (category.value === 'Commodities') {
-							pipValue = 1;
-					} else if (currencyPairQuote.endsWith('JPY')) {
-							pipValue = (0.01 / exchangeRate) * 100000;
-					} else {
-							pipValue = (0.0001 / exchangeRate) * 100000;
-					}
+        let pipValue = "";
+        let lotSize = "";
 
-					lotSize = riskAmount / (pips * pipValue);
+        if (category.value === 'Forex' || category.value === 'Commodities') {
+            if (category.value === 'Commodities') {
+                pipValue = 1;
+            } else if (currencyPairQuote.endsWith('JPY')) {
+                pipValue = (0.01 / exchangeRate) * 100000;
+            } else {
+                pipValue = (0.0001 / exchangeRate) * 100000;
+            }
 
-					outputDisplay.innerHTML = `
-						<p>To risk <span class="riskAmount">${riskAmount}&nbsp;${traderPreferedCurrency}</span> out of <span class="accountBalance">${accountBalance}&nbsp;${traderPreferedCurrency}</span> in '${currentAsset}', use a lot size of <span><strong>${lotSize.toFixed(2)}</strong></span>.</p>
-						<p>Units: <span class="unitsParagraph">${(lotSize * 100000).toFixed(2)}</span></p>
-					`;
-					console.log(exchangeRate);
-			}
-	} catch (error) {
-		console.error('Error fetching exchange rate:', error);
-	}
+            pipValue *= accountCurrencyExchangeRate;
+
+            lotSize = riskAmount / (pips * pipValue);
+
+            outputDisplay.innerHTML = `
+                <p>To risk <span class="riskAmount">${riskAmount}&nbsp;${traderPreferedCurrency}</span> out of <span class="accountBalance">${accountBalance}&nbsp;${traderPreferedCurrency}</span> in '${currentAsset}', use a lot size of <span><strong>${lotSize.toFixed(2)}</strong></span>.</p>
+                <p>Units: <span class="unitsParagraph">${(lotSize * 100000).toFixed(2)}</span></p>
+            `;
+            console.log(exchangeRate);
+        }
+    } catch (error) {
+        console.error('Error fetching exchange rate:', error);
+    }
 }
-
-
 
 let nextButton2Visibility = false;
 
 function nextButtonToggle() {
-
 	if (nextButton2Visibility === true) {
 		next_button1.style.display = 'none';
 	} else if (pipsInput.style.border === 'none') {
@@ -359,7 +186,7 @@ for (let key of keys1) {
 			currentAsset = "";
 			input1 = "";
 			accountBalance = "";
-			pips ="";
+			pips = "";
 			riskAmount = "";
 			next_button.style.display = 'none';
 			next_button1.style.display = 'none';
@@ -378,14 +205,13 @@ for (let key of keys1) {
 			pipsInput.innerHTML = `<p>Dial&nbsp;stoploss&nbsp;pips</p>`;
 			balanceInput.innerHTML = `<p>Dial&nbsp;a/c&nbsp;balance</p>`;
 			percentageRiskInput.innerHTML = `<p>Dial&nbsp;%&nbsp;risk</p>`;
-			outputDisplay.innerHTML ="";
+			outputDisplay.innerHTML = "";
 			outputDisplay.style.display = 'none';
 			switchButton.innerHTML = 'Switch to Money';
 			percentageSpan.style.display = 'inline';
 			moneySpan.style.display = 'none';
 			moneyRiskInput.style.display = 'none';
 			nextButton2Visibility = false;
-			
 		} else if (value == "backspace") {
 			input1 = input1.slice(0, -1);
 			display_input1.innerHTML = CleanInput(input1);
@@ -423,7 +249,7 @@ for (let key of keys1) {
 				moneyRiskInput.style.border = 'none';
 				moneyRiskInput.style.color = '#898888';
 				percentageRiskInput.style.color = '#898888';
-	
+
 				switchButton.style.display = 'none';
 				display_input1 = "";
 				console.log(pips);
@@ -488,7 +314,7 @@ function CleanInput(input1) {
 	return input_array1.join("");
 }
 
-function CleanOutput (output1) {
+function CleanOutput(output1) {
 	let output_string1 = output1.toString();
 	let decimal1 = output_string1.split(".")[1];
 	output_string1 = output_string1.split(".")[0];
@@ -509,7 +335,7 @@ function CleanOutput (output1) {
 	return output_array1.join("");
 }
 
-function ValidateInput (value1) {
+function ValidateInput(value1) {
 	let last_input1 = input1.slice(-1);
 	let operators1 = ["+", "-", "*", "/"];
 
@@ -528,7 +354,7 @@ function ValidateInput (value1) {
 	return true;
 }
 
-function PerpareInput (input1) {
+function PerpareInput(input1) {
 	let input_array1 = input1.split("");
 
 	for (let i = 0; i < input_array1.length; i++) {

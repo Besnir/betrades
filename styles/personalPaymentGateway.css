@@ -1,0 +1,261 @@
+body {
+  padding-top: 100px;
+  height: fit-content;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.payContainer {
+  display: flex;
+  width: 70%;
+  margin: 0 auto;
+  border: 1px solid #dedede;
+  border-radius: 12px;
+  margin-bottom: 50px;
+  overflow: hidden;
+}
+
+.payContainer .kushoto {
+  width: 25%;
+  font-weight: bold;
+}
+
+.payContainer .kushoto p {
+  padding: 30px 20px;
+}
+
+.payContainer hr {
+  border: 1px solid #dedede;
+  margin: 0 15px;
+}
+
+.methods {
+  padding: 10px 0;
+}
+
+.methods div {
+  padding: 7px 20px;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.methods div.active {
+  color: #ff8c00;
+}
+
+.methods div:hover {
+  box-shadow: 0 0 6px rgba(48, 47, 47, 0.9);
+}
+
+.methods div::after {
+  content: '';
+  display: inline-block;
+  color: #ff8c00;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 4px 0 4px 4px;
+  border-left-color: var(--fondy-success);
+  margin-left: 10px;
+}
+
+.payContainer .fa-solid {
+  margin-right: 10px;
+  font-size: 20px;
+  color: #898888;
+}
+
+.payContainer .katikati {
+  width: 50%;
+  border-right: 1px solid #dedede;
+  border-left: 1px solid #dedede;
+  height: 100%;
+}
+.payContainer .katikati p {
+  text-align: left;
+}
+
+.payContainer .katikati a {
+ width: 100%;
+ padding: 15px;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+}
+
+.payContainer .katikati .card-details {
+  padding: 20px 80px;
+}
+
+.payContainer .katikati .card-details form {
+  min-width: 258px;
+}
+
+.payContainer .katikati .card-details .c-number {
+  width: 100%;
+  border: 1px solid #898888;
+  border-radius: 3px;
+  padding: 0 12px;
+  margin-top: 10px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.card-details input {
+  border: none;
+  border-radius: 3px;
+  outline: none;
+}
+
+.payContainer .katikati .card-details .c-number .fa-solid {
+  margin: 0;
+}
+
+.payContainer .katikati .card-details .c-details {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  margin: 20px 0;
+}
+
+.payContainer .katikati .card-details .cc-exp {
+  border: 1px solid #898888;
+  border-radius: 3px;
+  height: 50px;
+  margin-top: 10px;
+  padding: 12px;
+  width: 150px;
+}
+
+.card-details .cvv-box {
+  border: 1px solid #898888;
+  margin-top: 10px;
+  padding: 12px;
+  height: 50px;
+  border-radius: 3px;
+  display: flex;
+  justify-content: space-between;
+  width: 100px;
+}
+
+.card-details .cc-cvv {
+  width: 60px;
+}
+
+.card-details .email input {
+  width: 100%;
+  border: 1px solid #898888;
+  border-radius: 3px;
+  padding: 12px;
+  height: 50px;
+  margin-top: 10px;
+} 
+
+.payContainer .kulia {
+  width: 25%;
+}
+
+.payContainer .kulia p {
+  padding: 30px 20px;
+  font-weight: bold;
+}
+
+.payContainer .kulia .details {
+  padding: 20px 20px;
+}
+
+.payContainer .kulia .details div{
+  padding: 3px 0; 
+}
+
+.payContainer .kulia .details .orderDesc {
+  font-weight: bold;
+}
+
+.payContainer .kulia a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px;
+}
+
+.payContainer .kulia a img {
+  height: 5vh;
+}
+
+button {
+  width: 100%;
+  border: none;
+  height: 40px;
+  margin-top: 30px;
+  font-size: 18px;
+  color: white;
+  background: #065577;
+}
+
+button:hover {
+  opacity: .87;
+  background: black;
+  cursor: pointer;
+}
+
+@media (max-width: 970px) {
+  .payContainer {
+    width: 98%;
+  }
+}
+
+@media (min-width: 971px) {
+  .payContainer {
+    width: 90%;
+  }
+}
+
+@media (max-width: 1100px) {
+  .payContainer {
+    width: 98%;
+  }
+}
+
+@media (min-width: 1101px) {
+  .payContainer {
+    width: 70%;
+  }
+}
+
+@media (max-width: 890px) {
+  .payContainer {
+    width: 70%;
+    flex-direction: column;
+  }
+
+  .payContainer .kushoto {
+    width: 100%;
+  }
+
+  .payContainer .katikati {
+    width: 100%;
+    text-align: center;
+  }
+
+  .payContainer .katikati .card-details {
+    padding: 20px 0;
+    width: 70%;
+    margin: 0 auto;
+  }
+
+  .payContainer .kulia {
+    width: 100%;
+  }
+}
+
+@media (max-width: 530px) {
+  .payContainer {
+    width: 92%;
+  }
+}

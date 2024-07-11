@@ -1,43 +1,39 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contact Us~be.trades</title>
-  <link rel="website icon" type="image/png" href="images/betradeslogo.png">
+  <title>Payment~be.trades</title>
+  <link rel="website icon" type="png" 
+  href="images/betradeslogo.png">
 
-  <link rel="stylesheet" href="styles/header.css">
   <link rel="stylesheet" href="styles/general.css">
+  <link rel="stylesheet" href="styles/header.css">
+  <link rel="stylesheet" href="styles/personalPaymentGateway.css">
   <link rel="stylesheet" href="styles/footer.css">
-  <link rel="stylesheet" href="styles/contact-us.css">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
 </head>
-<body>
-  <div class="loader"></div>
+<body>    <div class="loader"></div>
   <!--header section-->
   <header>
     <nav>
       <ul class="nav-bar">
         <div class="icon">
           <div class="company-logo">
-            <img src="images/betradeslogo.png" alt="Be.Trades Logo">
+            <img src="images/betradeslogo.png" alt="logo">
           </div>
           <div class="company-name">
             <h1>BE<br>TRADES</h1>
           </div>
         </div>
-
+        
         <span id="rootMain" class="menu">
           <div class="sidebar-title1">
             <div class="sidebar-brand1">
               <div class="company-logo1">
-                <img src="images/betradeslogo.png" alt="Be.Trades Logo">
+                <img src="images/betradeslogo.png">
               </div>
               <div class="company-name1">
                 <p>BE<br>TRADES</p>
@@ -50,11 +46,11 @@
           <li><a href="mentorship.html">Mentorship&nbsp;Plan</a></li>
           <li><a href="pipsCalculator.html">Pips&nbsp;Calculator</a></li>
           <li><a href="faqs.html">Faqs</a></li>
-          <li><a class="active" href="#">Contact&nbsp;Us</a></li>
+          <li><a href="contact-us.html">Contact&nbsp;Us</a></li>
 
           <div class="dashboard-details2">
-            <a href="sign-up.html" class="signup2">SIGN&nbsp;UP</a>
-            <a href="login.html" class="login2">LOGIN</a>
+            <a href="sign-up.html" class="signup2">SIGN&nbsp;UP</a></button>
+            <a href="login.html" class="login2">LOGIN</a></button>
           </div>
         </span>
 
@@ -69,8 +65,8 @@
         </div>
 
         <div class="dashboard-details">
-          <a href="sign-up.html" class="signup">SIGN&nbsp;UP</a>
-          <a href="login.html" class="login">LOGIN</a>
+          <a href="sign-up.html" class="signup">SIGN&nbsp;UP</a></button>
+          <a href="login.html" class="login">LOGIN</a></button>
         </div>
 
         <span onclick="toggleMainMenu()" class="material-icons-outlined icon1">menu</span>
@@ -96,90 +92,69 @@
     <a href="personalPaymentGateway.html" class="cartPlaceOrder">PLACE&nbsp;ORDER</a>
   </main>
 
-  <div class="main">
-    <div class="contact-us-text">
-      <h1><span>GET</span> IN&nbsp;TOUCH</h1>
-      <p>Our supportive team is set and would like to hear from you!</p>
+  <div class="payContainer">
+    <div class="kushoto">
+      <p>Payment&nbsp;Methods</p>
+      <hr>
+      <div class="methods">
+        <div onclick="doFun()" id="tColorA" class="active"><i class="fa-solid fa-credit-card" style="color: #ff8c00"></i>Payment&nbsp;by&nbsp;Card</div>
+        <div onclick="doFunA()" id="tColorB"><i class="fa-solid fa-building-columns"></i>Internet Banks</div>
+        <div onclick="doFunB()" id="tColorC"><i class="fa-solid fa-wallet"></i>Apple/Google Pay</div>
+      </div>
+      <hr>
     </div>
+    <div class="katikati">
+      <a href="https://www.shift4shop.com/credit-card-logos.html" ><img alt="Credit Card Logos" title="Credit Card Logos" src="https://www.shift4shop.com/images/credit-card-logos/cc-lg-4.png" width="250" height="auto"/></a>
+      <hr>
 
-    <div class="container">
-      <form onsubmit="sendEmail(); reset(); return false;" class="helpcenter">
-        <h2>HOW&nbsp;CAN&nbsp;I&nbsp;HELP?</h2>
-
-        <div class="formfill">
-          <div class="mainfill">
-            <div class="inputbox">
-              <input type="text" id="firstname" required>
-              <span>First Name</span>
-            </div>
-
-            <div class="inputbox">
-              <input type="text" id="email" required>
-              <span>Email</span>
-            </div>
+      <div class="card-details">
+        <form>
+          <p>Card number</p>
+          <div class="c-number" id="c-number">
+            <input id="number" class="cc-number" placeholder="Card number" maxlength="19" required>
+            <i class="fa-solid fa-credit-card"></i> 
           </div>
 
-          <div class="mainfill">
-            <div class="inputbox">
-              <input type="text" id="lastname" required>
-              <span>Last Name</span>
+          <div class="c-details">
+            <div>
+              <p>Expiry date</p>
+              <input id="e-date" class="cc-exp" placeholder="MM/YY" required maxlength="5" required>
             </div>
-
-            <div class="inputbox">
-              <input type="text" id="phonenumber" required>
-              <span>Phone</span>
+            <div>
+              <p>CVV</p>
+              <div id="cvv-box" class="cvv-box">
+                <input id="cvv" class="cc-cvv" placeholder="CVV" required maxlength="3" required>
+                <i class="fa-solid fa-circle-question" title="3 digits on the back of the card"></i>
+              </div>
             </div>
           </div>
-        </div>
-
-        <div class="textAreaMain">
-          <textarea id="message" required></textarea>
-          <span>Type your message</span>
-        </div>
-
-        <div class="send-btn">
-          <input type="submit" value="Send">
-        </div>
-      </form>
-
-      <div class="contactInfo">
-        <div class="infobox">
-          <div class="box">
-            <i class="fa fa-map-marker" aria-hidden="true"></i>
+          <div class="email">
+            <p>Email</p>
+            <input type="email" placeholder="Email" id="email" required>
           </div>
-          <div class="info">
-            <h3>Address</h3>
-            <p>Nairobi, KENYA</p>
-          </div>
-        </div>
-
-        <div class="infobox">
-          <div class="box">
-            <i class="fa fa-envelope" aria-hidden="true"></i>
-          </div>
-          <div class="info">
-            <h3>Email</h3>
-            <p>emmanueltindi23@gmail.com</p>
-          </div>
-        </div>
-
-        <div class="infobox">
-          <div class="box">
-            <i class="fa fa-phone" aria-hidden="true"></i>
-          </div>
-          <div class="info">
-            <h3>Phone</h3>
-            <p>+254773029440 / +254759578630</p>
-          </div>
-        </div>
+          <button>PAY NOW</button>
+        </form>
       </div>
     </div>
+
+    <div class="kulia">
+      <p>Order Information</p>
+      <hr>
+      <div class="details">
+        <div class="orderDesc">Order&nbsp;description</div>
+        <div>Test payment</div>
+      </div>
+      <hr>
+      <a href="https://www.shift4shop.com/credit-card-logos.html" ><img alt="Credit Card Logos" title="Credit Card Logos" src="https://www.shift4shop.com/images/credit-card-logos/cc-lg-4.png" width="250" height="auto"/></a>
+    </div>
   </div>
+  
   <!--footer section-->
   <footer>
     <div class="platform">
       <div class="platform-ih">
-        <img src="images/betradeslogo.png" alt="Be.Trades Logo">
+        <img src="images/betradeslogo.png" alt="">
+
         <h1>BE.TRADES</h1>
       </div>
 
@@ -203,13 +178,12 @@
       <li><a href="mentorship.html">Mentorship&nbsp;Plan</a></li>
       <li><a href="pipsCalculator.html">Pips&nbsp;Calculator</a></li>
       <li><a href="faqs.html">Faqs</a></li>
-      <li><a class="active" href="#">Contact&nbsp;Us</a></li>
+      <li><a href="contact-us.html">Contact&nbsp;Us</a></li>
     </ul>
 
     <p>Copyright &copy; 2024 <span>Be.Trades </span>&#8226; All rights reserved.</p>
   </footer>
-
-  <script src="https://smtpjs.com/v3/smtp.js"></script>
   <script src="styles/styles.js"></script>
+  <script src="styles/personalPaymentGateway.js"></script>
 </body>
 </html>

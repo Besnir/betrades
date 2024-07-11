@@ -12,6 +12,8 @@
   font-size: 23px;
   padding: 0 10px;
   text-align: center;
+  margin-top: 10px;
+  margin-bottom: 0;
 }
 
 .video-grid .main-video-grid {
@@ -62,7 +64,12 @@
   background: white;
 }
 .video-and-titles table tbody tr:nth-child(even) {
-  background: #89888888;
+  background: #8988883a;
+}
+
+.video-and-titles table tbody tr:hover {
+  cursor: pointer;
+  background-color: #89888888;
 }
 
 .video-and-titles table td {
